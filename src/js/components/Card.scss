@@ -1,0 +1,8 @@
+@import "../../scss/colors";
+
+.card {
+  flex: 0 1 30rem;
+  padding: 2rem;
+  border: 1px solid $color--gray;
+  border-radius: 0.5rem;
+}

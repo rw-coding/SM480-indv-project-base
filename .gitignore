@@ -1,0 +1,19 @@
+/.vagrant
+/dist
+/edcircuitnow_web/web/dist
+/edcircuitnow_web/images
+/node_modules
+npm-debug.log
+*.pyc
+.DS_Store
+/backups
+celerybeat.pid
+edcircuitnow_web/media_assets
+.idea/
+/env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.vscode

@@ -1,0 +1,65 @@
+
+.root {
+    font-size: 16px;
+}
+.pop-up{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 20px auto;
+    position: absolute;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+}
+
+.pop-up-para{
+    margin: 10px;
+}
+a:link, a:visited {
+    text-decoration: none;
+  }
+
+.pop-up-button{
+    display: flex;
+    width: 40%;
+    margin:auto;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+
+// a:link, a:visited {
+//     text-decoration: none;
+//   }
+
+// .no-button{
+//     background-color: #F2F2F2;
+//     border: #F2F2F2 2px solid;
+//     border-radius: 10px;
+//     color: red;
+//     font-weight: bold;
+//     margin: 10px;
+//     padding: 0.5rem 1rem;
+
+//     &:hover {
+//         background-color: #3288ED;
+//         color: #000;
+//     }
+// }
+// .connect-button {
+//     background-color: #3288ED;
+//     border: #3288ED 2px solid;
+//     border-radius: 10px;
+//     color: #FFF;
+//     font-weight: bold;
+//     margin: 10px;
+//     padding: 0.5rem 1rem;
+
+
+//     &:hover {
+//         background-color: #FFFFFF;
+//         border: #FFF 2px solid;
+//         color: #3288ED;
+//     }
+// }

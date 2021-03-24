@@ -1,0 +1,21 @@
+@import './scss/global.scss';
+
+.oAuthLogin {
+  padding: 0.25rem 1rem;
+  color: rgba(0,0,0,0);
+  background-color: #336699;
+  transition: all 500ms linear;
+  &:hover {
+    color: #336699;
+    background-color: #FFF;
+    padding: 0.5rem 1.5rem;
+    font-size: 2rem;
+    
+    &::after {
+      content: "STUFF";
+      color: rgba(255,255,255,1);
+    }
+  }
+
+
+}
