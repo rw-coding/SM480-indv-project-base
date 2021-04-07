@@ -19,3 +19,48 @@
 
 
 }
+
+.topbar {
+  height: 6rem;
+  background-color: #336699;
+}
+
+.user {
+
+  &--image {
+    border-radius: 50rem;
+  }
+}
+
+.tweet {
+  margin: 5rem 5%;
+
+  &--container {
+    display: flex;
+  }
+  &--bar {
+    height: 3.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #336699;
+  }
+  &--expanded {
+    height: 30rem;
+    width: 50%;
+    border: 1px solid #336699;
+    border-radius: 0.5rem;
+  }
+  &--listing {
+    height: 30rem;
+    width: 30%;
+    border: 1px solid #336699;
+    border-radius: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  &--text {
+    &--bold {
+      font-weight: bold;
+    }
+  }
+}

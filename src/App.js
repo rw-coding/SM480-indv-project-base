@@ -1,29 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { map, orderBy } from "lodash";
+import * as TwitterAPI from "./js/utils/TwitterAPI";
 import LoginForm from "./js/components/LoginForm";
+import Card from "./js/components/Card";
+import Input from "./js/components/Input";
 
 function App(props) {
+    const [twitterData, setTwitterData] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isShowing, setIsShowing] = useState(false);
+    const [tweetData, setTweetData] = useState(null);
+
+    useEffect(() => {
+        if(!props.tweets) {
+          props.searchTweets("");
+        }
+      }, []);
+
+    console.log("TWITTER: ", twitterData);
+    const mostRetweeted = twitterData
+      ? orderBy(twitterData, ["public_metrics.retweet_count"], ["desc"])
+      : [];
+
+    const fullTweet = (tweet) => {
+        setIsShowing(true);
+        setTweetData(tweet);
+    };
 
     return (
         <div className='App'>
             {isLoggedIn ?
                 <BrowserRouter basename={""}>
                     <Switch>
-                        <Route path="/page-address">
-                            <div>
-                                <h1>New Page</h1>
-                                <h3>This page uses React Router.</h3>
-                                <p>Copy this Route and update the "path" to the desired relative URL</p>
-                                <Link to={"/"}>LINK TO HOME PAGE</Link>
-                            </div>
-                        </Route>
                         <Route path="/">
-                            <div>
-                                <Link to={"/page-address"}>LINK TO ANOTHER PAGE</Link>
-                                <h1>HOME PAGE</h1>
-                                <h3>This page uses React Router.</h3>
-                                <p>This entire code block should be replaced by a React Component.</p>
+                            <div className="topbar"></div>
+                            <div className="tweet--container">
+                                <div className="tweet tweet--expanded">
+                                    {isShowing && (
+                                        <div>
+                                            {tweetData.user.name}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="tweet tweet--listing">
+                                    <div className="tweet--bar">
+                                        <Input placeholder="Search by tweet content" />
+                                    </div>
+                                    {map(mostRetweeted.slice(0, 10), (tweet) => (
+                                        <div onClick={() => fullTweet(tweet)}>
+                                            <img src={tweet.user.profile_image_url} className="user--image" />
+                                            <div>
+                                                <div className="tweet--text--bold">
+                                                    {tweet.user.name}
+                                                </div>
+                                                <div>
+                                                    {tweet.user.username}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </Route>
                     </Switch>
