@@ -16,7 +16,7 @@ export function searchTweets(searchQuery) {
 
 export function loadTweet(tweetId) {
     return request()
-        .get(`/api/v1/twitter/${searchQuery}`)
+        .get(`/api/v1/twitter/${tweetId}`)
         .send()
         .then((res) => {
             if (res.body) {

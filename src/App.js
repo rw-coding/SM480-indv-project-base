@@ -14,9 +14,9 @@ function App(props) {
 
     useEffect(() => {
         if(!props.tweets) {
-          props.searchTweets("");
+            TwitterAPI.searchTweets("seuss");
         }
-      }, []);
+    }, []);
 
     console.log("TWITTER: ", twitterData);
     const mostRetweeted = twitterData
@@ -34,7 +34,12 @@ function App(props) {
                 <BrowserRouter basename={""}>
                     <Switch>
                         <Route path="/">
-                            <div className="topbar"></div>
+                            <div className="tweet--bar tweet--container">
+                                <div className="tweet--search">
+                                    <Input placeholder="Search by tweet content" />
+                                </div>
+                                <button className="sort--button">|</button>
+                            </div>
                             <div className="tweet--container">
                                 <div className="tweet tweet--expanded">
                                     {isShowing && (
@@ -43,10 +48,7 @@ function App(props) {
                                         </div>
                                     )}
                                 </div>
-                                <div className="tweet tweet--listing">
-                                    <div className="tweet--bar">
-                                        <Input placeholder="Search by tweet content" />
-                                    </div>
+                                <div className="tweet--listing">
                                     {map(mostRetweeted.slice(0, 10), (tweet) => (
                                         <div onClick={() => fullTweet(tweet)}>
                                             <img src={tweet.user.profile_image_url} className="user--image" />
