@@ -14,7 +14,7 @@ function App(props) {
 
     useEffect(() => {
         if(!props.tweets) {
-            TwitterAPI.searchTweets("seuss");
+            TwitterAPI.searchTweets("");
         }
     }, []);
 
