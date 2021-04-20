@@ -56,7 +56,7 @@ function App(props) {
     }
     
     if (!twitterData.length) {
-        return <div>LOADING</div>;
+        return <div></div>;
     }
 
     const fullTweet = (tweet) => {
