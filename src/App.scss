@@ -19,7 +19,7 @@
 
 }
 
-.sort {
+.search {
 
   &--button {
     background-color: #336699;
@@ -33,6 +33,27 @@
   }
 }
 
+.sort {
+
+  &--button {
+    color: #FFF;
+    border: none;
+    padding: 0 2%;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.graph {
+
+  &--button {
+    height: 2rem;
+    width: 100%;
+  }
+}
+
 .user {
 
   &--image {
@@ -41,40 +62,85 @@
 }
 
 .tweet {
-  margin: 5% 5%;
+  margin: 2.5% 5%;
 
   &--container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     flex: 1;
     height: calc(100vh - 4.25rem);
   }
-  &--search {
-    width: 35%;
-    margin-left: 65%;
+  &--columm {
+    flex-direction: column;
+  }
+  &--row {
+    display: inline-flex;
+    flex-wrap: wrap-reverse;
+    flex: 1;
+    flex-direction: row;
   }
   &--bar {
     height: 4rem;
     width: 100%;
-    padding: 0.5rem 0;
+    align-content: center;
+    padding: 0.5rem 1rem 0.5rem 65%;
     background-color: #336699;
+  }
+  &--search {
+    width: 80%;
+  }
+  &--preview {
+    padding: 1rem;
+
+    &:hover {
+      background-color: #dfdfdf;
+    }
+  }
+  &--user {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  &--names {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   &--expanded {
     height: calc(100% - 10rem);
-    width: 50%;
+    width: 100%;
+    padding: 1rem;
     border: 1px solid #336699;
     border-radius: 0.5rem;
+    overflow-y: auto;
   }
   &--listing {
-    height: 100%;
+    height: 100.6%;
     width: 37.5%;
     background-color: #fff;
     border-width: 0 0.5rem 0.5rem 0.5rem;
     border: solid #336699;
+    overflow-y: auto;
   }
   &--text {
     &--bold {
       font-weight: bold;
+    }
+  }
+}
+
+.graph {
+  height: 90%;
+
+  &--buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 2.5% 0;
+    height: 5%;
+    background-color: #336699;
+
+    button {
+      height: 100%;
     }
   }
 }

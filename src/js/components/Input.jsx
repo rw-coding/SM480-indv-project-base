@@ -3,15 +3,12 @@ import "./Input.scss";
 import PropTypes from "prop-types";
 import Icon from "./Icon";
 function Input(props) {
-  const { inputValue, setInputValue } = useState("");
-  useEffect(
-    (e) => {
-      if (props.onUpdate) {
-        props.onUpdate(e.target.value);
-      }
-    },
-    [inputValue, props],
-  );
+  const [inputValue, setInputValue] = useState("");
+  const updateSearch = (e) => {
+    if (props.onUpdate) {
+      props.onUpdate(e.target.value);
+    }
+  };
 
   return (
     <div className='input'>
@@ -27,7 +24,6 @@ function Input(props) {
         className='input__field'
         placeholder={props.placeholder}
         onChange={setInputValue}
-        value={inputValue}
       />
 
       {!!props.error && (
