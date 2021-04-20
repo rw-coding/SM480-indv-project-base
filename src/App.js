@@ -20,6 +20,8 @@ function App(props) {
     const [showPie, setShowPie] = useState(false);
     const [showLine, setShowLine] = useState(false);
     const [showArea, setShowArea] = useState(false);
+    const [sortShowing, setSortShowing] = useState(false);
+    const [sortOrder, setSortOrder] = useState("public_metrics.like_count")
 
     useEffect(() => {
         if(!props.tweets) {
@@ -31,10 +33,16 @@ function App(props) {
       const results = await TwitterAPI.searchTweets(query);
       setTwitterData(results);
     };
+    
+    const likeCount = "public_metrics.like_count";
+    const replyCount = "public_metrics.reply_count";
+    const quoteCount = "public_metrics.quote_count";
+    const shareCount = "public_metrics.share_count";
+    let sorter = sortOrder;
 
     console.log("TWITTER: ", twitterData);
     const tweeted = twitterData
-      ? orderBy(twitterData, ["public_metrics.reply_count"], ["desc"])
+      ? orderBy(twitterData, [sorter], ["desc"])
       : [];
 
     let tweetList = 10;
@@ -84,6 +92,24 @@ function App(props) {
         setShowPie(false);
         setShowLine(false);
         setShowArea(true);
+    }
+    const showSort = () => {
+        setSortShowing(true)
+    }
+    const hideSort = () => {
+        setSortShowing(false)
+    }
+    const likeChange = () => {
+        setSortOrder(likeCount)
+    }
+    const replyChange = () => {
+        setSortOrder(replyCount)
+    }
+    const quoteChange = () => {
+        setSortOrder(quoteCount)
+    }
+    const shareChange = () => {
+        setSortOrder(shareCount)
     }
 
     const metrics = map(tweeted.slice(0, tweetList), (tweet) => ({
@@ -138,10 +164,9 @@ function App(props) {
                         <Route path="/">
                             <div className="tweet--bar tweet--row">
                                 <div class="tweet--search">
-                                    <input onChange={changeTerm} placeholder="Search by tweet content" />
+                                    <input onChange={changeTerm} placeholder="Search by tweet content" className="tweet--update" />
                                 </div>
-                                <button className="search--button">S</button>
-                                <button className="sort--button">|</button>
+                                <button className="sort--button" onClick={() => showSort()}><b>|</b></button>
                             </div>
                             <div className="tweet--container">
                                 {!showGraph && (
@@ -161,9 +186,12 @@ function App(props) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div>
+                                                    <div className="tweet--text">
                                                         {tweetData.text}
                                                     </div>
+                                                    <a class="twitter-follow-button" href={"https://twitter.com/" + tweetData.user.username} data-show-count="true">
+                                                        Follow @{tweetData.user.username}
+                                                    </a>
                                                 </div>
                                             )}
                                         </div>
@@ -239,6 +267,14 @@ function App(props) {
                                         </div>
                                     ))}
                                 </div>
+                                {sortShowing && (
+                                    <div className="tweet--sort" onMouseLeave={() => hideSort()}>
+                                        <button onClick={() => likeChange()}>Sort by likes</button>
+                                        <button onClick={() => replyChange()}>Sort by replies</button>
+                                        <button onClick={() => quoteChange()}>Sort by quotes</button>
+                                        <button onClick={() => shareChange()}>Sort by shares</button>
+                                    </div>
+                                )}
                             </div>
                         </Route>
                     </Switch>

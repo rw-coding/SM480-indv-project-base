@@ -37,6 +37,7 @@
 
   &--button {
     color: #FFF;
+    background-color: #336699;
     border: none;
     padding: 0 2%;
 
@@ -49,8 +50,19 @@
 .graph {
 
   &--button {
+    color: #336699;
+    border-color: #336699;
+    border-width: 1px;
+    border-radius: 0.5rem;
+    border-style: solid;
+    background-color: #FFF;
     height: 2rem;
     width: 100%;
+
+    &:hover {
+      color: #FFF;
+      background-color: #336699;
+    }
   }
 }
 
@@ -75,9 +87,7 @@
   }
   &--row {
     display: inline-flex;
-    flex-wrap: wrap-reverse;
-    flex: 1;
-    flex-direction: row;
+    justify-content: space-evenly;
   }
   &--bar {
     height: 4rem;
@@ -123,8 +133,47 @@
     overflow-y: auto;
   }
   &--text {
+    margin-bottom: 1rem;
+
     &--bold {
       font-weight: bold;
+    }
+  }
+  &--update {
+    height: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 0.5rem;
+
+    :active {
+      border: none;
+    }
+  }
+  &--sort {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1;
+    height: auto;
+    width: 20%;
+    margin-left: 80%;
+
+    button {
+      height: 3rem;
+      padding: 0 1rem;
+      border: none;
+      border-radius: 0;
+      text-align: left;
+      background-color: #FFF;
+
+      :active {
+        border: none;
+      }
+      &:hover {
+        background-color: #dfdfdf;
+      }
     }
   }
 }
@@ -134,13 +183,25 @@
 
   &--buttons {
     display: flex;
-    justify-content: space-around;
     margin: 0 0 2.5% 0;
     height: 5%;
-    background-color: #336699;
+    width: 100%;
 
     button {
       height: 100%;
+      width: 25%;
+      color: #336699;
+      text-decoration: underline;
+      background-color: #FFF;
+      border: none;
+
+      :active {
+        border: none;
+      }
+
+      &:hover {
+        background-color: #dfdfdf;
+      }
     }
   }
 }
